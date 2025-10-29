@@ -1,25 +1,22 @@
-// SumOfDivisors.cpp
+//SumOfDivisors.cpp
 
 #include <iostream>
 using namespace std;
 
-// Function to calculate the sum of all divisors of a natural number
-// The function takes an integer as input and returns the sum of its divisors
-
-int sumOfDivisors(int a) {
-    int sum = 0;
-    for (int div = 1; div <= a; div++) {
-        if (a % div == 0) {
-            sum += div;
-        }
-    }
-    return sum;
-}
+// This program reads a natural number n and calculates the sum of all its divisors.
 
 int main() {
-    int num;
-    cout << "Enter a natural number: ";
-    cin >> num;
-    cout << "Sum of divisors: " << sumOfDivisors(num) << endl;
+    long long n, sum = 0, i;
+    cin >> n;
+
+    for (i = 1; i * i < n; i++) {
+        if (n % i == 0)
+            sum += i + n / i;
+    }
+
+    if (i * i == n) // If n is a perfect square, add the square root only once
+        sum += i;
+
+    cout << sum;
     return 0;
 }
